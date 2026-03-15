@@ -1,82 +1,47 @@
-# EX3 
-## DATE: 13-mar-2026
+# EX3 Write a program to count the number of digits in an integer.
+
 ## AIM:
-To write a program that computes the factorial of a given number using both recursion and iteration. The program should take an integer input, calculate its factorial using a recursive function as well as an iterative loop, and then display both results for comparison.
+To write a C program to implement Tower of Hanoi
+
 ## Algorithm
-Start
-
-Read the input number N.
-
-Recursive Method:
-
-Call function factRecursive(N)
-
-If N == 0, return 1
-
-Else return N × factRecursive(N − 1)
-
-Store the value returned by the recursive function.
-
-Iterative Method:
-
-Initialize result = 1
-
-For i = 1 to N, do
-result = result × i
-
-Store the iterative factorial result.
-
-Display:
-Factorial (Recursive): <value>
-Factorial (Iterative): <value>
-
-End 
+1. Start the program.
+2. Read an integer from the user.
+3. Define a recursive function countDigits() that counts digits by dividing the number by 10 each time.
+4. Base condition: if the number is 0, return 0.
+5. Recursive step: return 1 + countDigits(number / 10).
+6. Display the total count of digits.
+7. Stop the program.
 
 ## Program:
 ```
+/*
+Program to to count the number of digits in an integer
+*/
 import java.util.Scanner;
-public class FactorialCalculator {
-    // Recursive method to calculate factorial
-    static long factorialRecursive(int n) {
-      //write your code here
-      if (n == 0 || n == 1) {
-            return 1;
-        }
-        // Recursive call
-        return n * factorialRecursive(n - 1);
-    }
 
-    // Iterative method to calculate factorial
-    static long factorialIterative(int n) {
-        long result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i;
-        }
-        return result;
-      
-      
+public class CountDigitsRecursive {
+    static int countDigits(int n) {
+        if (n == 0)
+            return 0;
+        return 1 + countDigits(n / 10);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
-        int num = sc.nextInt();
-        
-        if (num < 0) {
-            System.out.println("Factorial is not defined for negative numbers.");
-        } else {
-            System.out.println("Factorial (Recursive): " + factorialRecursive(num));
-            System.out.println("Factorial (Iterative): " + factorialIterative(num));
-        }
+        System.out.print("Enter an integer: ");
+        int n = sc.nextInt();
+        if (n == 0)
+            System.out.println("Number of digits: 1");
+        else
+            System.out.println("Number of digits: " + countDigits(Math.abs(n)));
+        sc.close();
     }
 }
-
 ```
 
 ## Output:
-<img width="666" height="220" alt="image" src="https://github.com/user-attachments/assets/3830dcff-0cbd-43ff-804e-90ca60ac8a25" />
 
-
+<img width="341" height="158" alt="image" src="https://github.com/user-attachments/assets/7937432d-e34f-46f6-bfde-6840e7fe8c8f" />
 
 
 ## Result:
