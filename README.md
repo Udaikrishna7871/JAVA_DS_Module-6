@@ -1,99 +1,77 @@
-# EXP-1
-# AIM:
-To write a recursive Java program that computes the factorial of a given non-negative integer N, where 
-0
-≤
-𝑁
-≤
-15
-0≤N≤15. The program should take an integer as input, use recursion instead of loops to calculate the factorial, and display the result in the format:
-# ALGORITHM:
-Start
+# EX 1 You’re creating a health monitoring device which stores several sensor readings in an array. To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
 
-Read the integer input N.
+## Developed by: UDAI KRISHNA R
+## RegisterNumber:212224060288
+## AIM:
+To write a JAVA program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
 
-If N is 0
-→ Return 1 (because 0! = 1).
+## Algorithm
+1. Start
+2.Read the number of elements (e.g., number of heartbeat readings).
+3.Store all readings in an array.
+4.Call a recursive function findMin(arr, index)
+If index == arr.length - 1, return arr[index]
+Else return min(arr[index], findMin(arr, index + 1))
+5.Print the minimum value returned by the recursive function.
+6.End 
 
-Else
-→ Compute factorial using the recursive formula:
-factorial(N) = N × factorial(N − 1)
+## Program:
+```
+/*
+Program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
+*/
+import java.util.*;
 
-Return the computed factorial value.
-
-Display the result in the format:
-Factorial: <result>
-
-End
-# PROGRAM:
-~~~
-import java.util.Scanner;
-
-public class RecursiveFactorial {
-
-    public static int factorial(int n) {
-        if (n == 0) {
-            return 1;
-        } 
-        else
-        {
-            
-         int res = n*factorial(n-1);
-         return res;
-            
-            
+public class Main {
+    static int getMin(int[] arr, int i, int n) {
+        if (i == n - 1) {
+            return arr[i];
         }
+
+    
+        int minRest = getMin(arr, i + 1, n);
+       
+        return Math.min(arr[i], minRest);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int result = factorial(n);
-        System.out.println("Factorial: " + result);
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(getMin(arr, 0, n));
     }
 }
+```
 
-~~~
-# OUTPUT:
-<img width="447" height="131" alt="image" src="https://github.com/user-attachments/assets/56acf4c0-0d56-4b0c-bd04-3a9c33328617" />
+## Output:
+
+<img width="649" height="254" alt="image" src="https://github.com/user-attachments/assets/e2c774aa-cc92-40f6-acb8-778042dd4078" />
 
 
-# EXP-2
-# AIM:
-To develop a recursive program that counts how many times a given number appears in an array. The program should take an array of integers and a target number as input, then use recursion (without loops) to determine and display how many times the target value occurs in the array.
-# ALGORITHM:
-Start
+## Result:
+Thus the JAVA program to find the minimum value (e.g., lowest heartbeat), implement a recursive method has implemented successfully
 
-Read the size of the array N.
 
-Read the N elements into the array.
+# Ex2 Count how many times a number appears in an array recursively.
 
-Read the target number to be counted.
+## AIM:
+To write a Java program to Count how many times a number appears in an array recursively.
 
-Call the recursive function:
-countOccurrences(array, index, target)
-where index starts at 0.
+## Algorithm
+1.Start
+2.Read the size of the array and input all elements into the array.
+3.Read the target number whose frequency you want to count.
+4.Call the recursive function countOccurrences(arr, index, target) If index == arr.length, return 0 If arr[index] == target, return 1 + countOccurrences(arr, index + 1, target) Else return countOccurrences(arr, index + 1, target)
+5.Display the returned count as the total number of occurrences. 
 
-In the recursive function:
-
-If index equals array size (index == N)
-→ Return 0 (base case).
-
-Else
-→ If array[index] equals target
-→ return 1 + countOccurrences(array, index + 1, target)
-→ Else
-→ return countOccurrences(array, index + 1, target)
-
-Store the returned value as the total count.
-
-Display:
-The number <target> appears <count> time(s) in the array.
-
-End
-
-# PROGRAM:
-~~~
+## Program:
+```
+/*
+Program Count how many times a number appears in an array recursively.
+*/
 import java.util.Scanner;
 
 public class CountOccurrences {
@@ -101,17 +79,16 @@ public class CountOccurrences {
     // Recursive function to count occurrences of a target number
     public static int countOccurrences(int[] arr, int n, int target) {
         //write your code here
-         if (n == 0) {
-        return 0;
-    }
+        if (n == 0) {
+            return 0;
+        }
 
-    // Check last element and add 1 if it matches
-    int countForThisElement = (arr[n - 1] == target) ? 1 : 0;
-
-    // Recursively count in the rest of the array
-    return countForThisElement + countOccurrences(arr, n - 1, target);
-        
-        
+        // Check the last element and add 1 if it matches the target
+        if (arr[n - 1] == target) {
+            return 1 + countOccurrences(arr, n - 1, target);
+        } else {
+            return countOccurrences(arr, n - 1, target);
+        }
     }
 
     public static void main(String[] args) {
@@ -141,158 +118,119 @@ public class CountOccurrences {
         scanner.close();
     }
 }
+```
 
-~~~
-# OUTPUT:
-<img width="980" height="529" alt="image" src="https://github.com/user-attachments/assets/1edd36b7-99aa-42af-8fdd-ab32ba961685" />
+## Output:
+
+<img width="1027" height="611" alt="image" src="https://github.com/user-attachments/assets/8b339a84-624e-4b20-93c5-7304d201510d" />
 
 
-# EXP-3
-# AIM:
-To write a program that computes the factorial of a given number using both recursion and iteration. The program should take an integer input, calculate its factorial using a recursive function as well as an iterative loop, and then display both results for comparison.
-# ALGORITHM:
-Start
+## Result:
+Thus, the Java program to Count how many times a number appears in an array recursively is implemented successfully.
 
-Read the input number N.
 
-Recursive Method:
+# EX3 Write a program to count the number of digits in an integer.
 
-Call function factRecursive(N)
+## AIM:
+To write a C program to implement Tower of Hanoi
 
-If N == 0, return 1
+## Algorithm
+1. Start the program.
+2. Read an integer from the user.
+3. Define a recursive function countDigits() that counts digits by dividing the number by 10 each time.
+4. Base condition: if the number is 0, return 0.
+5. Recursive step: return 1 + countDigits(number / 10).
+6. Display the total count of digits.
+7. Stop the program.
 
-Else return N × factRecursive(N − 1)
-
-Store the value returned by the recursive function.
-
-Iterative Method:
-
-Initialize result = 1
-
-For i = 1 to N, do
-result = result × i
-
-Store the iterative factorial result.
-
-Display:
-Factorial (Recursive): <value>
-Factorial (Iterative): <value>
-
-End
-# PROGRAM:
-~~~
+## Program:
+```
+/*
+Program to to count the number of digits in an integer
+*/
 import java.util.Scanner;
-public class FactorialCalculator {
-    // Recursive method to calculate factorial
-    static long factorialRecursive(int n) {
-      //write your code here
-      if (n == 0 || n == 1) {
-            return 1;
-        }
-        // Recursive call
-        return n * factorialRecursive(n - 1);
-    }
 
-    // Iterative method to calculate factorial
-    static long factorialIterative(int n) {
-        long result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i;
-        }
-        return result;
-      
-      
+public class CountDigitsRecursive {
+    static int countDigits(int n) {
+        if (n == 0)
+            return 0;
+        return 1 + countDigits(n / 10);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
-        int num = sc.nextInt();
-        
-        if (num < 0) {
-            System.out.println("Factorial is not defined for negative numbers.");
-        } else {
-            System.out.println("Factorial (Recursive): " + factorialRecursive(num));
-            System.out.println("Factorial (Iterative): " + factorialIterative(num));
-        }
+        System.out.print("Enter an integer: ");
+        int n = sc.nextInt();
+        if (n == 0)
+            System.out.println("Number of digits: 1");
+        else
+            System.out.println("Number of digits: " + countDigits(Math.abs(n)));
+        sc.close();
     }
 }
-~~~
-# OUTPUT:
-<img width="666" height="220" alt="image" src="https://github.com/user-attachments/assets/3830dcff-0cbd-43ff-804e-90ca60ac8a25" />
+```
+
+## Output:
+
+<img width="341" height="158" alt="image" src="https://github.com/user-attachments/assets/7937432d-e34f-46f6-bfde-6840e7fe8c8f" />
 
 
-# EXP-4
-# AIM:
-To analyze and determine the nature (even/odd/mixed) of the resulting matrix when performing matrix addition between two matrices where Matrix A contains all odd numbers and Matrix B contains all even numbers of the same dimension.
-# ALGORITHM:
-Start
+## Result:
+Thus, the Java program to to count the number of digits in an integer is implemented successfully.
 
-Read the dimensions of the matrices (rows and columns).
+# Ex4 You are given a Java program that performs matrix addition. If Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension, what will be the nature (even/odd/mixed) of the resulting matrix?
 
-Read Matrix A (all odd numbers).
+## AIM:
+To write a java function to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix.
 
-Read Matrix B (all even numbers).
+## Algorithm
+1. Start the program.
+2. Read the dimensions of both matrices (rows and columns).
+3. Check whether Matrix A and Matrix B have the same dimensions.
+4. If not, display “Matrices are not of same dimension” and stop.
+5. Read Matrix A and check each element:
+6. If every element is odd, continue.
+7. If any element is even, mark A as invalid and stop further checking.
+8. If both matrices are valid, compute the resultant matrix (e.g., A + B or any operation specified).
+9. Determine the nature of the resultant matrix:
+10. If all elements are odd, print “Resultant matrix is an Odd Matrix”.
+11. If all elements are even, print “Resultant matrix is an Even Matrix”.
+12. Display the Resultant Matrix.
+13. Stop the program.   
 
-Add the matrices element-wise:
-Result[i][j] = A[i][j] + B[i][j]
-
-For each element in the resulting matrix:
-Since Odd + Even = Odd,
-every element of the resulting matrix will be ODD.
-
-Display the resulting matrix and conclude its nature as ODD matrix.
-
-End
-# PROGRAM:
-~~~
+## Program:
+```
+/*
+Program to ind the nature of resultant matrrix.
+*/
 import java.util.Scanner;
 
-public class MatrixAdditionNature {
+public class MatrixAddition {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Read matrix dimensions
         int rows = sc.nextInt();
         int cols = sc.nextInt();
 
-        // Read Matrix A
         int[][] A = new int[rows][cols];
+        int[][] B = new int[rows][cols];
+        int[][] result = new int[rows][cols];
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 A[i][j] = sc.nextInt();
             }
         }
-
-        // Read Matrix B
-        int[][] B = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 B[i][j] = sc.nextInt();
             }
         }
-
-        // Add matrices
-        int[][] result = new int[rows][cols];
-
-        boolean allEven = true;
-        boolean allOdd = true;
-
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 result[i][j] = A[i][j] + B[i][j];
-
-                // Check nature of elements
-                if (result[i][j] % 2 == 0) {
-                    allOdd = false;
-                } else {
-                    allEven = false;
-                }
             }
         }
-
-        // Print result matrix
-       // System.out.println("Result matrix:");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 System.out.print(result[i][j] + " ");
@@ -300,82 +238,89 @@ public class MatrixAdditionNature {
             System.out.println();
         }
 
-        // Nature of matrix
        
     }
 }
+```
 
-~~~
-# OUTPUT:
-<img width="378" height="551" alt="image" src="https://github.com/user-attachments/assets/5eb7a3e3-ca12-4e55-aaa3-20b71e10b095" />
+## Output:
 
-# EXP-5
-# AIM:
-To implement Bubble Sort to arrange the elements of an unsorted array in ascending order by repeatedly comparing adjacent elements and swapping them if they are in the wrong order.
-# ALGORITHM:
-Start
+<img width="422" height="624" alt="image" src="https://github.com/user-attachments/assets/34782319-f865-4fe8-a281-f3aed6852160" />
 
-Read the size of the array N.
+## Result:
+Thus, the java program to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix is implemented successfully.
 
-Read the N elements into the array.
 
-Repeat for i = 0 to N - 2:
+# Ex5 Count Inversions in an Array
 
-For j = 0 to N - i - 2:
+## AIM:
+To write a Java program  to Count the number of inversions in an array where inversion is defined as: arr[i] > arr[j] and i < j
 
-If array[j] > array[j + 1]
-→ Swap the two elements.
+## Algorithm
 
-After each pass, the largest unsorted element moves to its correct position.
-
-Continue until all elements are sorted in ascending order.
-
-Print the sorted array.
-
-End
-# PROGRAM:
-~~~
+1. Start the program.
+2. Declare an integer array arr of size n.
+3. Read the value of n (number of elements).
+4. Read n elements and store them in the array arr.
+5. Initialize a variable count to 0 to store the number of inversions.
+6. Use two nested loops:
+7. Outer loop variable i from 0 to n - 1
+8. Inner loop variable j from i + 1 to n - 1
+9. For each pair (i, j), if arr[i] > arr[j] and i < j, increment count by 1.
+10. After all comparisons, print the value of count as the total number of inversions in the array.
+11. Stop the program.
+    
+## Program:
+```
+/*
+Program toto Count the number of inversions in an array where inversion is defined as: arr[i] > arr[j] and i < j
+*/
 import java.util.Scanner;
 
-class prog {
-    
-    
-    static void bubbleSort(int arr[], int n){
-       for (int i = 0; i < n - 1; i++) {
-            // Last i elements are already in place
-            for (int j = 0; j < n - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    // Swap arr[j] and arr[j+1]
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+public class CountInversions
+{
+    public static int countInversions(int[] arr)
+{
+        int n = arr.length;
+        int count = 0;
+        for (int i = 0; i < n - 1; i++)
+{
+            for (int j = i + 1; j < n; j++)
+{
+                if (arr[i] > arr[j]) {
+                    count++; 
                 }
             }
-        }//Type your code
-    }
-
-    // Function to print an array
-    static void printArray(int arr[], int size){
-        int i;
-        for (i = 0; i < size; i++)
-            System.out.print(arr[i] + " ");
-        System.out.println();
-    }
-
-    // Driver program
-    public static void main(String args[]){
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        
-        int arr[] = new int[n];
-        for(int i=0;i<n;i++){
-            arr[i]= sc.nextInt();
         }
-        bubbleSort(arr, n);
-       
-        printArray(arr, n);
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter " + n + " elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int inversions = countInversions(arr);
+
+        System.out.println("Number of inversions in the array: " + inversions);
+
+        sc.close();
     }
 }
-~~~
-# OUTPUT:
-<img width="516" height="238" alt="image" src="https://github.com/user-attachments/assets/65ec5ef9-95a2-4d8c-a0de-19791fb81a89" />
+```
+
+## Output:
+
+<img width="406" height="243" alt="image" src="https://github.com/user-attachments/assets/6c314097-77b6-4f0e-a6ac-6e5e1cc689f4" />
+
+## Result:
+Thus the Java program to to Count the number of inversions in an array where inversion is defined as: arr[i] > arr[j] and i < jis implemented successfully.
