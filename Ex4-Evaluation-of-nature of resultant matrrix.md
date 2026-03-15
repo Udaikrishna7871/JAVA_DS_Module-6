@@ -1,78 +1,56 @@
-# Ex4 
-## DATE: 13-mar-2026
+# Ex4 You are given a Java program that performs matrix addition. If Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension, what will be the nature (even/odd/mixed) of the resulting matrix?
+
 ## AIM:
-To analyze and determine the nature (even/odd/mixed) of the resulting matrix when performing matrix addition between two matrices where Matrix A contains all odd numbers and Matrix B contains all even numbers of the same dimension.
+To write a java function to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix.
 
 ## Algorithm
-Start
-
-Read the dimensions of the matrices (rows and columns).
-
-Read Matrix A (all odd numbers).
-
-Read Matrix B (all even numbers).
-
-Add the matrices element-wise:
-Result[i][j] = A[i][j] + B[i][j]
-
-For each element in the resulting matrix:
-Since Odd + Even = Odd,
-every element of the resulting matrix will be ODD.
-
-Display the resulting matrix and conclude its nature as ODD matrix.
-
-End
-   
+1. Start the program.
+2. Read the dimensions of both matrices (rows and columns).
+3. Check whether Matrix A and Matrix B have the same dimensions.
+4. If not, display “Matrices are not of same dimension” and stop.
+5. Read Matrix A and check each element:
+6. If every element is odd, continue.
+7. If any element is even, mark A as invalid and stop further checking.
+8. If both matrices are valid, compute the resultant matrix (e.g., A + B or any operation specified).
+9. Determine the nature of the resultant matrix:
+10. If all elements are odd, print “Resultant matrix is an Odd Matrix”.
+11. If all elements are even, print “Resultant matrix is an Even Matrix”.
+12. Display the Resultant Matrix.
+13. Stop the program.   
 
 ## Program:
 ```
+/*
+Program to ind the nature of resultant matrrix.
+*/
 import java.util.Scanner;
 
-public class MatrixAdditionNature {
+public class MatrixAddition {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Read matrix dimensions
         int rows = sc.nextInt();
         int cols = sc.nextInt();
 
-        // Read Matrix A
         int[][] A = new int[rows][cols];
+        int[][] B = new int[rows][cols];
+        int[][] result = new int[rows][cols];
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 A[i][j] = sc.nextInt();
             }
         }
-
-        // Read Matrix B
-        int[][] B = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 B[i][j] = sc.nextInt();
             }
         }
-
-        // Add matrices
-        int[][] result = new int[rows][cols];
-
-        boolean allEven = true;
-        boolean allOdd = true;
-
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 result[i][j] = A[i][j] + B[i][j];
-
-                // Check nature of elements
-                if (result[i][j] % 2 == 0) {
-                    allOdd = false;
-                } else {
-                    allEven = false;
-                }
             }
         }
-
-        // Print result matrix
-       // System.out.println("Result matrix:");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 System.out.print(result[i][j] + " ");
@@ -80,14 +58,14 @@ public class MatrixAdditionNature {
             System.out.println();
         }
 
-        // Nature of matrix
        
     }
 }
-
 ```
 
 ## Output:
 
-<img width="378" height="551" alt="image" src="https://github.com/user-attachments/assets/5eb7a3e3-ca12-4e55-aaa3-20b71e10b095" />
+<img width="422" height="624" alt="image" src="https://github.com/user-attachments/assets/34782319-f865-4fe8-a281-f3aed6852160" />
 
+## Result:
+Thus, the java program to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix is implemented successfully.
